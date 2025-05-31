@@ -15,7 +15,7 @@ if (navigator.geolocation) {
   console.log("Geolocation is not supported by this browser.");
 }
 async function getDetails() {
-  let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${document.querySelector('input').value}&limit=1&appid=${openWeatherApi}`);
+  let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${document.querySelector('input').value}&limit=1&appid=${openWeatherApi}`);
   let data = await response.json();
   let lat = data[0].lat;
   let long = data[0].lon;
@@ -23,12 +23,12 @@ async function getDetails() {
   getForecastDeatils(lat,long);
 }
 let getWeatherDeatils = async (lat,long) => {
-  let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${long}&appid=${openWeatherApi}`);
+  let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${long}&appid=${openWeatherApi}`);
   let data = await response.json();
   loadWeatherDetails(data);
 };
 let getForecastDeatils = async (lat,long) => {
-  let response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${openWeatherApi}&units=metric`);
+  let response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${openWeatherApi}&units=metric`);
   let data = await response.json();
   loadForecastDetails(data);
 };
