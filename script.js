@@ -14,7 +14,7 @@ if (navigator.geolocation) {
 } else {
   console.log("Geolocation is not supported by this browser.");
 }
-async function getDetails() {
+async function getDetails(){
   let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${document.querySelector('input').value}&limit=1&appid=${openWeatherApi}`);
   let data = await response.json();
   let lat = data[0].lat;
@@ -84,3 +84,7 @@ let getDay = (timestamp) => {
   const formattedDate = date.toLocaleDateString('en-US', options);
   return formattedDate;
 }
+document.addEventListener('keydown' ,(event) => {
+  if(event.key === 'Enter')
+    getDetails();
+});
